@@ -14,8 +14,10 @@ import { ProductionView } from "./views/production-view"
 import { ProductionBenefitsView } from "./views/production-benefits-view"
 import { ProductionBenefitsCostView } from "./views/production-benefits-cost"
 import { ProductionBenefitsIncomeView } from "./views/production-benefits-income"
+import { ProductionBenefitsKinshipView } from "./views/production-benefits-kinship"
 import { DiseaseControlView } from "./views/disease-control-view"
 import { ArchiveManagementView } from "./views/archive-management-view"
+import { TechTrainingView } from "./views/tech-training-view"
 
 // Dashboard View (Default)
 function DashboardView() {
@@ -91,6 +93,10 @@ export function MainContent() {
       return <ProductionBenefitsCostView />
     case "production-benefits-income":
       return <ProductionBenefitsIncomeView />
+    case "kinship":
+      return <ProductionBenefitsKinshipView />
+    case "tech-training":
+      return <TechTrainingView />
     case "disease":
     case "disease-overview":
     case "disease-test-records":

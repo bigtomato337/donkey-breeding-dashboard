@@ -16,6 +16,8 @@ export type PageId =
   | "production-benefits-overview"
   | "production-benefits-cost"
   | "production-benefits-income"
+  | "kinship"
+  | "tech-training"
   | "disease"
   | "disease-overview"
   | "disease-test-records"

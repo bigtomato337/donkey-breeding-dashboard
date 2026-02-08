@@ -16,10 +16,13 @@ import { Badge } from "@/components/ui/badge"
 import { Search, Plus, Bell, ChevronDown, Settings } from "lucide-react"
 import { useNavigation } from "./navigation-context"
 import { AddDonkeyModal } from "./add-donkey-modal"
+import { AuthDialog } from "./auth-dialog"
+import { useAuth } from "./auth-context"
 
 export function DashboardHeader() {
   const { setActivePage } = useNavigation()
   const [isAddModalOpen, setIsAddModalOpen] = useState(false)
+  const { user, logout } = useAuth()
 
   return (
     <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-border bg-card px-6">
@@ -61,36 +64,46 @@ export function DashboardHeader() {
           </span>
         </Button>
 
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="gap-2">
-              <Avatar className="h-8 w-8">
-                <AvatarFallback className="bg-primary text-primary-foreground">
-                  管
-                </AvatarFallback>
-              </Avatar>
-              <div className="flex flex-col items-start">
-                <span className="text-sm font-medium">管理员</span>
-                <Badge variant="outline" className="text-[10px] px-1 py-0 h-4 bg-primary/10 text-primary border-primary/20">
-                  当前角色: 超级管理员
-                </Badge>
-              </div>
-              <ChevronDown className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-48">
-            <DropdownMenuLabel>我的账户</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>个人设置</DropdownMenuItem>
-            <DropdownMenuItem onClick={() => setActivePage("user-admin")}>
-              系统配置
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem className="text-destructive">
-              退出登录
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        {!user ? (
+          <>
+            <AuthDialog defaultTab="login" triggerText="登录" />
+            <AuthDialog defaultTab="register" triggerText="注册" />
+          </>
+        ) : (
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="gap-2">
+                <Avatar className="h-8 w-8">
+                  <AvatarFallback className="bg-primary text-primary-foreground">
+                    {user.account.slice(0, 1).toUpperCase()}
+                  </AvatarFallback>
+                </Avatar>
+                <div className="flex flex-col items-start">
+                  <span className="text-sm font-medium">{user.account}</span>
+                  <Badge
+                    variant="outline"
+                    className="text-[10px] px-1 py-0 h-4 bg-primary/10 text-primary border-primary/20"
+                  >
+                    已登录
+                  </Badge>
+                </div>
+                <ChevronDown className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-48">
+              <DropdownMenuLabel>我的账户</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>个人设置</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setActivePage("user-admin")}>
+                系统配置
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem className="text-destructive" onClick={logout}>
+                退出登录
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        )}
       </div>
     </header>
   )

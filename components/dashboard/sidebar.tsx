@@ -8,6 +8,8 @@ import {
   Database,
   TrendingUp,
   ShieldCheck,
+  GitBranch,
+  GraduationCap,
   FileText,
   UserCog,
   ClipboardList,
@@ -45,6 +47,18 @@ const mainNavItems: { id: PageId; title: string; icon: typeof LayoutDashboard; s
     title: "生产效益",
     icon: TrendingUp,
     subtext: "成本、收入、收益分析",
+  },
+  {
+    id: "kinship",
+    title: "血缘关系",
+    icon: GitBranch,
+    subtext: "上下三代、三代内关系查询",
+  },
+  {
+    id: "tech-training",
+    title: "科技培训",
+    icon: GraduationCap,
+    subtext: "培训视频、人员学习情况",
   },
   {
     id: "archives",

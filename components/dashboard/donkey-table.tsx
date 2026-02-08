@@ -52,6 +52,46 @@ const donkeyData = [
     lastBreedingDate: "2023-10-30",
     milkYield: "2.5 kg",
   },
+  {
+    id: "DB-2023006",
+    breed: "德州黑驴",
+    status: "健康",
+    statusColor: "success" as const,
+    lastBreedingDate: "2023-11-20",
+    milkYield: "2.9 kg",
+  },
+  {
+    id: "DB-2023007",
+    breed: "关中驴",
+    status: "观察中",
+    statusColor: "warning" as const,
+    lastBreedingDate: "2023-10-05",
+    milkYield: "1.9 kg",
+  },
+  {
+    id: "DB-2023008",
+    breed: "广灵驴",
+    status: "健康",
+    statusColor: "success" as const,
+    lastBreedingDate: "2023-09-18",
+    milkYield: "2.3 kg",
+  },
+  {
+    id: "DB-2023009",
+    breed: "佳米驴",
+    status: "健康",
+    statusColor: "success" as const,
+    lastBreedingDate: "2023-12-02",
+    milkYield: "2.6 kg",
+  },
+  {
+    id: "DB-2023010",
+    breed: "德州黑驴",
+    status: "隔离",
+    statusColor: "destructive" as const,
+    lastBreedingDate: "2023-07-28",
+    milkYield: "0 kg",
+  },
 ]
 
 const statusConfig = {
