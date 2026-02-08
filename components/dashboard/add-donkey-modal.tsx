@@ -199,7 +199,7 @@ export function AddDonkeyModal({ open, onOpenChange }: AddDonkeyModalProps) {
                     mode="single"
                     selected={date}
                     onSelect={setDate}
-                    initialFocus
+                    autoFocus
                   />
                 </PopoverContent>
               </Popover>
